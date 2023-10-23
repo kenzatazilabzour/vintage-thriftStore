@@ -6,7 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
-import NoteListPage from '../NoteListPage/NoteListPage';
+import ProductListPage from '../../ProductListPage/ProductListPage';
 import HomePage from '../HomePage/HomePage';
 import PostsPage from '../PostsPage/PostsPage';
 import Navigate from '../../components/Navigate/Navigate';
@@ -26,7 +26,7 @@ export default function App() {
               <Route path="/posts" element={<PostsPage />} />
               <Route path="/orders/new" element={<NewOrderPage />} />
               <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/notes" element={<NoteListPage />} />
+              <Route path="/product" element={<ProductListPage />} />
             <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </>
