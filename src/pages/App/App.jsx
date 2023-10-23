@@ -7,6 +7,9 @@ import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import NoteListPage from '../NoteListPage/NoteListPage';
+import HomePage from '../HomePage/HomePage';
+import PostsPage from '../PostsPage/PostsPage';
+import Navigate from '../../components/Navigate/Navigate';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
