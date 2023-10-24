@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const notesCtrl = require('../../controllers/api/notes');
+const productsCtrl = require('../../controllers/api/products');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // All paths start with '/api/notes
 
 // POST /api/notes
-router.post('/', ensureLoggedIn, notesCtrl.create);
-
+router.post('/', ensureLoggedIn, productsCtrl.create);
+router.get('/', productsCtrl.getAll)
 
 module.exports = router;

@@ -1,18 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
+import NewProductPage from '../NewProductPage/NewProductPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductListPage from '../../ProductListPage/ProductListPage';
-import HomePage from '../HomePage/HomePage';
 import PostsPage from '../PostsPage/PostsPage';
 import Navigate from '../../components/Navigate/Navigate';
+import * as productsApi from "../../utilities/products-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [products, setProducts] = useState([]);
+
+  async function addProduct (formData){
+    const product = await productsApi.add(formData)
+    setProducts([...products, product]);
+  }
+  useEffect(() => {
+    async function getAllProducts(){
+      const products = await productsApi.getAll();
+      setProducts(products);
+    }
+    getAllProducts();
+  }, [])
 
   return (
     <main className="App">
@@ -21,13 +34,12 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<ProductListPage products = {products}/>} />
               <Route path="/auth" element={<AuthPage />} />
-              <Route path="/posts" element={<PostsPage />} />
-              <Route path="/orders/new" element={<NewOrderPage />} />
+              {/* <Route path="/posts" element={<PostsPage />} /> */}
+              <Route path="/products/new" element={<NewProductPage addProduct = {addProduct}/>} />
               <Route path="/orders" element={<OrderHistoryPage />} />
-              <Route path="/product" element={<ProductListPage />} />
-            <Route path="/*" element={<Navigate to="/" />} />
+            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
           </>
           :
