@@ -35,7 +35,7 @@ export default function App() {
   useEffect(() => {
     async function checkoutAllOrders() {
       const orders = await ordersApi.checkoutAll();
-      setProducts(orders);
+      setOrders(orders);
     }
     checkoutAllOrders();
   }, [])
