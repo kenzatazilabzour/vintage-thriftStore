@@ -10,6 +10,7 @@ import ProductListPage from '../../ProductListPage/ProductListPage';
 import PostsPage from '../PostsPage/PostsPage';
 import Navigate from '../../components/Navigate/Navigate';
 import * as productsApi from "../../utilities/products-api";
+import * as ordersApi from "../../utilities/orders-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -27,6 +28,18 @@ export default function App() {
     getAllProducts();
   }, [])
 
+  async function addOrder(formData) {
+    const order = await ordersApi.add(formData)
+    setOrders([...orders, order]);
+  }
+  useEffect(() => {
+    async function checkoutAllOrders() {
+      const orders = await ordersApi.checkoutAll();
+      setProducts(orders);
+    }
+    checkoutAllOrders();
+  }, [])
+
   return (
     <main className="App">
       { user ?
@@ -38,7 +51,7 @@ export default function App() {
               <Route path="/auth" element={<AuthPage />} />
               {/* <Route path="/posts" element={<PostsPage />} /> */}
               <Route path="/products/new" element={<NewProductPage addProduct = {addProduct}/>} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/orders" element={<OrderHistoryPage addOrder = {addOrder}/>} />
             {/* <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
           </>
