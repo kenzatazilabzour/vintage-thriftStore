@@ -15,6 +15,7 @@ import * as ordersApi from "../../utilities/orders-api";
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   async function addProduct (formData){
     const product = await productsApi.add(formData)
