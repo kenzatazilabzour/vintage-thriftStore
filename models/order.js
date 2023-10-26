@@ -14,10 +14,20 @@ const orderSchema = new mongoose.Schema({
   },
   totalPrice: {
     type: Number,
-    required: true,
   },
+  isPaid: { type: Boolean, default: false }
 });
 
+orderSchema.statics.getCart = function(userId) {
+  return this.findOneAndUpdate(
+    // query object
+    { user: userId, isPaid: false },
+    // update doc - provides values when inserting
+    { user: userId },
+    // upsert option
+    { upsert: true, new: true }
+  ).populate('products').exec();
+}
 const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;

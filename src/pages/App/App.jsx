@@ -5,6 +5,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewProductPage from '../NewProductPage/NewProductPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductListPage from '../../ProductListPage/ProductListPage';
 import PostsPage from '../PostsPage/PostsPage';
@@ -19,6 +20,7 @@ export default function App() {
 
   async function addProduct (formData){
     const product = await productsApi.add(formData)
+    console.log(product);
     setProducts([...products, product]);
   }
   useEffect(() => {
@@ -29,17 +31,17 @@ export default function App() {
     getAllProducts();
   }, [])
 
-  async function addOrder(formData) {
-    const order = await ordersApi.add(formData)
-    setOrders([...orders, order]);
-  }
-  useEffect(() => {
-    async function checkoutAllOrders() {
-      const orders = await ordersApi.checkoutAll();
-      setOrders(orders);
-    }
-    checkoutAllOrders();
-  }, [])
+  // async function addOrder(formData) {
+  //   const order = await ordersApi.add(formData)
+  //   setOrders([...orders, order]);
+  // }
+  // useEffect(() => {
+  //   async function checkoutAllOrders() {
+  //     const orders = await ordersApi.checkoutAll();
+  //     setOrders(orders);
+  //   }
+  //   checkoutAllOrders();
+  // }, [])
 
   return (
     <main className="App">
@@ -52,7 +54,8 @@ export default function App() {
               <Route path="/auth" element={<AuthPage />} />
               {/* <Route path="/posts" element={<PostsPage />} /> */}
               <Route path="/products/new" element={<NewProductPage addProduct = {addProduct}/>} />
-              <Route path="/orders" element={<OrderHistoryPage addOrder = {addOrder}/>} />
+              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/cart" element={<ShoppingCart />} />
             {/* <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
           </>

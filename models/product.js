@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
     required: true,
     enum: ["t-shirts", "pants", "activewear", "jackets", "dresses", "shoes", "accessories"]
   },
-
+  isSold: { type: Boolean, default: false }
 });
 
 const Product = mongoose.model('Product', productSchema);

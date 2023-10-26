@@ -7,6 +7,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // POST /api/notes
 router.post('/', ensureLoggedIn, ordersCtrl.create);
-router.get('/', ordersCtrl.checkoutAll)
+router.get('/', ordersCtrl.getOrder);
+router.post('/products/:id', ordersCtrl.addToCart);
 
 module.exports = router;

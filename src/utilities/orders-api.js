@@ -5,6 +5,10 @@ export async function add(order) {
   return sendRequest(BASE_URL, 'POST', order);
 }
 
-export async function checkoutAll() {
+export async function getOrder() {
   return sendRequest(BASE_URL)
+}
+
+export async function addToOrder(product) {
+  return sendRequest(`${BASE_URL}/products/${product._id}`, 'POST', product)
 }

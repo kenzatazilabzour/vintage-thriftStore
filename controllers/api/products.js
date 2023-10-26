@@ -11,6 +11,7 @@ async function getAll(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.body);
   try {
 
     req.body.seller = req.user._id;
@@ -18,6 +19,7 @@ async function create(req, res) {
     // eslint-disable-next-line no-undef
     res.json(product);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 }

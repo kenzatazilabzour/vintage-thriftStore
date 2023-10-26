@@ -1,13 +1,16 @@
 const Order = require('../../models/order');
+const Product = require('../../models/product');
 
 module.exports = {
   create,
-  checkoutAll,
+  getOrder,
+  addToCart,
 };
 
-async function checkoutAll(req, res) {
-  const orders = await Order.find().populate('seller').exec();
-  res.json(orders);
+async function getOrder(req, res) {
+  const cart = await Order.getCart(req.user._id)
+   res.json(cart);
+
 }
 
 async function create(req, res) {
@@ -20,4 +23,14 @@ async function create(req, res) {
   } catch (err) {
     res.status(400).json(err);
   }
+}
+
+async function addToCart(req, res) {
+  const cart = await Order.getCart(req.user._id)
+  const product = await Product.findById(req.params.id)
+  if (!cart.products.includes(product._id)) {
+    cart.products.push(product)
+  }
+  await cart.save()
+  console.log(cart);
 }
