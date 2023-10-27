@@ -13,6 +13,8 @@ import Navigate from '../../components/Navigate/Navigate';
 import * as productsApi from "../../utilities/products-api";
 import * as ordersApi from "../../utilities/orders-api";
 
+
+
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [products, setProducts] = useState([]);
@@ -63,5 +65,54 @@ export default function App() {
           <AuthPage setUser={setUser} />
       }
     </main>
+  );
+}
+
+// export default function ProductDelete({ product, onDelete }) {
+//   const handleDelete = () => {
+//     fetch(`/api/products/${product._id}`, {
+//       method: 'DELETE',
+//     })
+//       .then((response) => {
+//         if (response.status === 200) {
+//           onDelete(product._id);
+//         } else {
+//           console.error('Error deleting product');
+//         }
+//       })
+//       .catch((error) => {
+//         console.error('Error:', error);
+//       });
+//   };
+
+//   return (
+//     <div>
+//       <h2>{product.name}</h2>
+//       <p>{product.description}</p>
+//       <button onClick={handleDelete}>Delete</button>
+//     </div>
+//   );
+// }
+
+async  function DeleteDetails() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error('Error:', error));
+  }, []);
+
+  const handleDeleteProduct = (productId) => {
+    setProducts((prevProducts) => prevProducts.filter((product) => product._id !== productId));
+  };
+
+  return (
+    <div>
+      {products.map((product) => (
+        <DeleteDetails key={product._id} product={product} onDelete={handleDeleteProduct} />
+      ))}
+    </div>
   );
 }

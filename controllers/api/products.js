@@ -1,8 +1,10 @@
 const Product = require('../../models/product');
 
+
 module.exports = {
   create,
   getAll,
+
 };
 
 async function getAll(req, res) {
