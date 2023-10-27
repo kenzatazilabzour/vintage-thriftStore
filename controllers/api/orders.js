@@ -7,6 +7,7 @@ module.exports = {
   create,
   getOrder,
   addToCart,
+  removeFromOrder,
 };
 
 async function getOrder(req, res) {
@@ -35,4 +36,13 @@ async function addToCart(req, res) {
   }
   await cart.save()
   console.log(cart);
+}
+
+async function removeFromOrder(req, res) {
+  console.log('helo');
+  const cart = await Order.getCart(req.user._id)
+  cart.products.remove(req.params.id)
+  await cart.save()
+  res.json(cart);
+
 }

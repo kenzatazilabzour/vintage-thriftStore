@@ -14,6 +14,12 @@ export default function ShoppingCart () {
 
   }, [])
 
+  async function handleRemove (id) {
+    const order = await ordersApi.removeProduct (id)
+    const updatedOrder = {...order}
+    setCart(updatedOrder);
+  }
+
  return (
   <div>
     <h1> Shopping Cart</h1>
@@ -22,6 +28,7 @@ export default function ShoppingCart () {
         <div key = {p._id}>
           <h3>{p.name}</h3>
           <p>price: {p.price}</p>
+          <button onClick = {()=> handleRemove (p._id)}>X</button>
         </div>
       ))
     }

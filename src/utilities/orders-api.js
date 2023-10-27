@@ -12,3 +12,8 @@ export async function getOrder() {
 export async function addToOrder(product) {
   return sendRequest(`${BASE_URL}/products/${product._id}`, 'POST', product)
 }
+
+export async function removeProduct(id) {
+  console.log(id);
+  return sendRequest(`${BASE_URL}/products/${id}`, 'DELETE')
+}
