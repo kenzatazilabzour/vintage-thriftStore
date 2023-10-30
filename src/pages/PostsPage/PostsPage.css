@@ -1,0 +1,55 @@
+/* Profile Container */
+.profile-container {
+  background-color: #3d051e;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid rgb(82, 5, 27);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* User Info Section */
+.user-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-info h2 {
+  font-size: 24px;
+}
+
+.user-info p {
+  font-size: 16px;
+}
+
+/* User Posts Section */
+.user-posts {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.user-posts h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 10px;
+  }
+
+  .user-info h2 {
+    font-size: 20px;
+  }
+
+  .user-info p {
+    font-size: 14px;
+  }
+
+  .user-posts h3 {
+    font-size: 18px;
+  }
+
+  /* Add more responsive styles as needed */
+}

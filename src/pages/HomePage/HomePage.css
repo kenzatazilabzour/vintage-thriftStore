@@ -1,0 +1,25 @@
+/* Container for the homepage */
+div {
+  background-color: #f7f7f7;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  div {
+    padding: 10px;
+  }
+
+  /* Add more responsive styles as needed */
+}

@@ -1,0 +1,44 @@
+/* Navbar container */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navbar links */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Navbar user welcome message */
+nav span {
+  font-weight: bold;
+}
+
+/* Log Out link */
+nav a.logout {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Apply styles on hover for links */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 5px 0;
+  }
+}

@@ -1,0 +1,62 @@
+/* Container for the Shopping Cart component */
+div {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Individual product item styles in the cart */
+div>div {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Product name styles */
+h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Price styles */
+p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Remove button styles */
+button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Apply styles on hover for the remove button */
+button:hover {
+  background-color: #c0392b;
+}
+
+/* Media query for responsive design */
+@media (max-width: 768px) {
+  div {
+    padding: 10px;
+  }
+
+  /* Add more responsive styles as needed */
+}

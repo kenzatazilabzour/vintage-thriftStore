@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import * as ordersApi from "../../utilities/orders-api";
+import './ShoppingCart.css';
 
 export default function ShoppingCart () {
   const [cart, setCart] = useState(null)
