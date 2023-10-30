@@ -9,6 +9,7 @@ router.post('/', ensureLoggedIn, ordersCtrl.create);
 router.get('/', ordersCtrl.getOrder);
 router.post('/products/:id', ordersCtrl.addToCart);
 router.delete('/products/:id', ordersCtrl.removeFromOrder);
+router.post('/cart/checkout', ordersCtrl.checkout);
 
 
 module.exports = router;

@@ -9,7 +9,6 @@ import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 import NavBar from '../../components/NavBar/NavBar';
 import ProductListPage from '../../ProductListPage/ProductListPage';
 import PostsPage from '../PostsPage/PostsPage';
-import Navigate from '../../components/Navigate/Navigate';
 import * as productsApi from "../../utilities/products-api";
 import * as ordersApi from "../../utilities/orders-api";
 
@@ -47,7 +46,7 @@ export default function App() {
               <Route path="/products/new" element={<NewProductPage addProduct = {addProduct}/>} />
               <Route path="/orders" element={<OrderHistoryPage />} />
               <Route path="/cart" element={<ShoppingCart />} />
-            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
+
             </Routes>
           </>
           :

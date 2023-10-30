@@ -8,6 +8,7 @@ module.exports = {
   getOrder,
   addToCart,
   removeFromOrder,
+  checkout,
 };
 
 async function getOrder(req, res) {
@@ -45,4 +46,11 @@ async function removeFromOrder(req, res) {
   await cart.save()
   res.json(cart);
 
+}
+
+async function checkout(req, res) {
+  const cart = await Order.getCart(req.user._id);
+  cart.isPaid = true;
+  await cart.save();
+  res.json(cart);
 }
