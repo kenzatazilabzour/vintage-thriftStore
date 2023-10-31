@@ -41,7 +41,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/" element={<ProductListPage products = {products}/>} />
+              <Route path="/" element={<ProductListPage products = {products} setProducts = {setProducts}/>} />
               <Route path="/auth" element={<AuthPage />} />
               {/* <Route path="/posts" element={<PostsPage />} /> */}
               <Route path="/products/new" element={<NewProductPage addProduct = {addProduct}/>} />

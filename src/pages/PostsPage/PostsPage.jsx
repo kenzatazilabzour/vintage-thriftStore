@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FeaturedProduct from '../components/FeaturedProduct/FeaturedProduct';
+import FeaturedProduct from '../../components/FeaturedProduct/FeaturedProduct';
 import './PostsPage.css';
 
 export default function Profile({ user, products }) {

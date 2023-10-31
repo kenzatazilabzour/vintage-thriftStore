@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import FeaturedProduct from '../components/FeaturedProduct/FeaturedProduct';
+import * as productsApi from '../utilities/products-api';
 
+export default function ProductListPage({products, setProducts}) {
 
-export default function ProductListPage({products}) {
-
-
+  useEffect(() => {
+    async function getAllProducts() {
+      const allProducts = await productsApi.getAll();
+      setProducts(allProducts);
+    }
+    getAllProducts();
+  }, [])
 
   return (
     <div>

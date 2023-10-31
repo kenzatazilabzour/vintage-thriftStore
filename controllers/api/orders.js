@@ -8,7 +8,8 @@ module.exports = {
   getOrder,
   addToCart,
   removeFromOrder,
-  checkout,
+  checkoutProduct,
+  getAllForUser,
 };
 
 async function getOrder(req, res) {
@@ -48,9 +49,23 @@ async function removeFromOrder(req, res) {
 
 }
 
-async function checkout(req, res) {
+async function checkoutProduct(req, res) {
   const cart = await Order.getCart(req.user._id);
+  let total = 0
   cart.isPaid = true;
-  await cart.save();
+  for (let i = 0; i < cart.products.length; i++){
+    const product = await Product.findById(cart.products[i]._id)
+    product.isSold = true
+    total += product.price
+    await product.save()
+  }
+  cart.totalPrice = total;
+  console.log(cart);
+   await cart.save();
   res.json(cart);
+}
+
+async function getAllForUser(req, res) {
+  const orders = await Order.find({user: req.user._id, isPaid:true}).populate('products').sort('-updatedAt')
+  res.json(orders);
 }

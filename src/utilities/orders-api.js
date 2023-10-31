@@ -17,3 +17,11 @@ export async function removeProduct(id) {
   console.log(id);
   return sendRequest(`${BASE_URL}/products/${id}`, 'DELETE')
 }
+
+export async function checkoutProduct() {
+  return sendRequest (`${BASE_URL}/checkout`, 'POST')
+}
+
+export async function getAllForUser(){
+  return sendRequest(`${BASE_URL}/history` )
+}

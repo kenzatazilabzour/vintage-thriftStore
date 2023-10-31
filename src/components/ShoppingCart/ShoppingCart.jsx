@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
+import {useNavigate} from "react-router-dom"
 import * as ordersApi from "../../utilities/orders-api";
 import './ShoppingCart.css';
 
 export default function ShoppingCart () {
+  const navigate = useNavigate();
   const [cart, setCart] = useState(null)
   console.log('hello', cart);
   useEffect(() => {
@@ -21,6 +23,14 @@ export default function ShoppingCart () {
     setCart(updatedOrder);
   }
 
+  async function handleSubmit () {
+    const order = await ordersApi.checkoutProduct ()
+    navigate('/orders')
+    console.log(order);
+  }
+
+
+
  return (
   <div>
     <h1> Shopping Cart</h1>
@@ -33,6 +43,8 @@ export default function ShoppingCart () {
         </div>
       ))
     }
+    <button onClick = {() => handleSubmit ()}>Checkout</button>
   </div>
+
  )
 }

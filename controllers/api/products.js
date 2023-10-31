@@ -8,7 +8,7 @@ module.exports = {
 };
 
 async function getAll(req, res) {
-  const products =  await Product.find().populate('seller').exec();
+  const products =  await Product.find({isSold:false}).populate('seller').exec();
   res.json(products);
 }
 
